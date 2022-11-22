@@ -1,7 +1,7 @@
 # This example requires the 'message_content' intent.
 
-import os
-import discord
+import os, discord
+from menu import gen_msg
 
 intents = discord.Intents.default()
 intents.message_content = True
@@ -23,6 +23,7 @@ async def on_ready():
 @client.event
 async def on_message(message):
     if client.user.mentioned_in(message):
-        await message.channel.send("ป้ากำลังเตรียมร้านนะจ้า หน้าไม่งอรอไม่นานจ้า")
+        msg = gen_msg()
+        await message.channel.send(msg)
 
 client.run(os.getenv('DISCORD_BOT'))
