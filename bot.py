@@ -12,18 +12,17 @@ client = discord.Client(intents=intents)
 async def on_ready():
     print(f'We have logged in as {client.user}')
 
-#@client.event
-#async def on_message(message):
-#    if message.author == client.user:
-#        return
-#
-#    if message.content.startswith('$hello'):
-#        await message.channel.send('Hello!')
-
 @client.event
 async def on_message(message):
-    if client.user.mentioned_in(message):
+
+    # bot
+    if message.author == client.user:
+        return
+
+    # someone mention bot
+    elif client.user.mentioned_in(message):
+        mention = message.author.mention
         msg = gen_msg()
-        await message.channel.send(msg)
+        await message.channel.send("{} {}".format(mention, msg))
 
 client.run(os.getenv('DISCORD_BOT'))
