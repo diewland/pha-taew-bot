@@ -19,8 +19,12 @@ async def on_message(message):
     if message.author == client.user:
         return
 
-    # someone mention bot
-    elif client.user.mentioned_in(message):
+    # conditions
+    mentioned = client.user.mentioned_in(message)
+    hungry = message.content.find('หิว') > -1
+
+    # reply
+    if mentioned or hungry:
         mention = message.author.mention
         msg = gen_msg()
         await message.channel.send("{} {}".format(mention, msg))
