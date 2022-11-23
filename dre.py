@@ -8,7 +8,7 @@ intents.message_content = True
 
 client = discord.Client(intents=intents)
 
-words = [ "เดร", "เ ด ร", "dre", "d r e" ]
+words = [ "เดร", "เ ด ร", " dre", " d r e", "dre ", "d r e " ]
 words_re = re.compile("|".join(words) ,re.IGNORECASE)
 
 @client.event
