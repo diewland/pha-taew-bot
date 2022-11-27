@@ -22,9 +22,14 @@ async def on_message(message):
     # conditions
     mentioned = client.user.mentioned_in(message)
     hungry = message.content.find('หิว') > -1
+    not_hungry = message.content.find('ไม่หิว') > -1
 
-    # reply
-    if mentioned or hungry:
+    # skip: not hungry
+    if not_hungry:
+        pass
+
+    # detect hungry
+    elif mentioned or hungry:
         mention = message.author.mention
         msg = gen_msg()
         await message.channel.send("{} {}".format(mention, msg))
