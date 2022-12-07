@@ -23,13 +23,14 @@ async def on_message(message):
     mentioned = client.user.mentioned_in(message)
     hungry = message.content.find('หิว') > -1
     not_hungry = message.content.find('ไม่หิว') > -1
+    named = message.content.find('แต๋ว') > -1
 
     # skip: not hungry
     if not_hungry:
         pass
 
     # detect hungry
-    elif mentioned or hungry:
+    elif mentioned or hungry or named:
         mention = message.author.mention
         msg = gen_msg()
         await message.channel.send("{} {}".format(mention, msg))
