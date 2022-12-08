@@ -11,7 +11,7 @@ client = discord.Client(intents=intents)
 words = [
     "เดร", "เ ด ร",
     " dre", " d r e", "dre ", "d r e ",
-    "รักนะ",
+    "รักนะ", "คิดถึง", "คิถึง", "คิดถุง", "คิถุง",
 ]
 words_re = re.compile("|".join(words) ,re.IGNORECASE)
 
@@ -24,6 +24,10 @@ async def on_message(message):
 
     # bot
     if message.author == client.user:
+        return
+
+    # not missing you
+    elif message.content.find("ไม่คิดถึง") > -1:
         return
 
     # someone say "dre"
