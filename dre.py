@@ -10,7 +10,7 @@ client = discord.Client(intents=intents)
 
 words = [
     "เดร", "เ ด ร",
-    " dre", " d r e", "dre ", "d r e ",
+    "dre", "d re", "dr e", "d r e",
     "รักนะ", "คิดถึง", "คิถึง", "คิดถุง", "คิถุง",
 ]
 words_re = re.compile("|".join(words) ,re.IGNORECASE)
