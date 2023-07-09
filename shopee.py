@@ -11,6 +11,7 @@ client = discord.Client(intents=intents)
 words = [
     "เหงา",
     "ส่วนลด",
+    "คิดมุขก่อน",
 ]
 words_re = re.compile("|".join(words) ,re.IGNORECASE)
 
